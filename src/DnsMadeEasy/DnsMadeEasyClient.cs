@@ -19,7 +19,7 @@ namespace DnsMadeEasy
 
         public IManagedDns ManagedDns { get; }
 
-        public DnsMadeEasyClient(string apiKey, string apiSecret, string url = "https://api.dnsmadeeasy.com")
+        public DnsMadeEasyClient(string apiKey, string apiSecret, string url = "https://api.dnsmadeeasy.com/V2.0")
         {
             _apiKey = apiKey;
             _apiSecret = apiSecret;
