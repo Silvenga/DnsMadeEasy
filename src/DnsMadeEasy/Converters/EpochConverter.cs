@@ -19,7 +19,7 @@ namespace DnsMadeEasy.Converters
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.Value == null) { return null; }
-            return Epoch.AddMilliseconds((long)reader.Value / 1000d);
+            return Epoch.AddMilliseconds((long)reader.Value);
         }
     }
 }
