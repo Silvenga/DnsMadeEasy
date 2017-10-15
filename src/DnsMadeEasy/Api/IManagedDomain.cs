@@ -6,7 +6,7 @@ using RestEase;
 
 namespace DnsMadeEasy.Api
 {
-    public interface IManagedDns
+    public interface IManagedDomain
     {
         [Get("/dns/managed/")]
         Task<Response<PagedResult<ManagedDomain>>> GetDomains();

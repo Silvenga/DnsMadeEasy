@@ -17,7 +17,7 @@ namespace DnsMadeEasy
         private readonly string _apiKey;
         private readonly string _apiSecret;
 
-        public IManagedDns ManagedDns { get; }
+        public IManagedDomain ManagedDomain { get; }
 
         public DnsMadeEasyClient(string apiKey, string apiSecret, string url = "https://api.dnsmadeeasy.com/V2.0")
         {
@@ -33,7 +33,7 @@ namespace DnsMadeEasy
                 JsonSerializerSettings = settings
             };
 
-            ManagedDns = client.For<IManagedDns>();
+            ManagedDomain = client.For<IManagedDomain>();
         }
 
         private Task RequestModifier(HttpRequestMessage request, CancellationToken cancellationToken)
