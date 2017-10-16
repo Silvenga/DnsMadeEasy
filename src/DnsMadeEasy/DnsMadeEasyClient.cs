@@ -27,7 +27,8 @@ namespace DnsMadeEasy
             _apiSecret = apiSecret;
             var settings = new JsonSerializerSettings
             {
-                NullValueHandling = NullValueHandling.Ignore
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Error
             };
 
             var client = new RestClient(url, RequestModifier)

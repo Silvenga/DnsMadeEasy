@@ -10,21 +10,21 @@ namespace DnsMadeEasy.Api
     public interface IManagedDomain : IDisposable
     {
         [Get("/dns/managed/")]
-        Task<Response<PagedResult<ManagedDomain>>> GetDomains();
+        Task<PagedResult<ManagedDomain>> GetDomains();
 
         [Get("/dns/managed/name")]
-        Task<Response<ManagedDomain>> GetDomainByName([Query("domainname")] string domainName);
+        Task<ManagedDomain> GetDomainByName([Query("domainname")] string domainName);
 
         [Get("/dns/managed/{domainId}")]
-        Task<Response<ManagedDomain>> GetDomain([Path] string domainId);
+        Task<ManagedDomain> GetDomain([Path] long? domainId);
 
         [Put("/dns/managed/{domainId}")]
-        Task UpdateDomain([Path] string domainId, [Body] ManagedDomain managedDomain);
+        Task UpdateDomain([Path] long? domainId, [Body] ManagedDomain managedDomain);
 
         [Post("/dns/managed/")]
-        Task<Response<ManagedDomain>> CreateDomain([Body] ManagedDomain managedDomain);
+        Task<ManagedDomain> CreateDomain([Body] ManagedDomain managedDomain);
 
         [Delete("/dns/managed/{domainId}")]
-        Task<Response<ManagedDomain>> DeleteDomain([Path] string domainId);
+        Task<ManagedDomain> DeleteDomain([Path] string domainId);
     }
 }
