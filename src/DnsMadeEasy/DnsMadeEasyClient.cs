@@ -12,12 +12,14 @@ using RestEase;
 
 namespace DnsMadeEasy
 {
-    public class DnsMadeEasyClient
+    public class DnsMadeEasyClient : IDisposable
     {
         private readonly string _apiKey;
         private readonly string _apiSecret;
 
         public IManagedDomain ManagedDomain { get; }
+
+        public IManagedRecord ManagedRecord { get; }
 
         public DnsMadeEasyClient(string apiKey, string apiSecret, string url = "https://api.dnsmadeeasy.com/V2.0")
         {
@@ -34,6 +36,7 @@ namespace DnsMadeEasy
             };
 
             ManagedDomain = client.For<IManagedDomain>();
+            ManagedRecord = client.For<IManagedRecord>();
         }
 
         private Task RequestModifier(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -46,6 +49,12 @@ namespace DnsMadeEasy
             }
 
             return Task.CompletedTask;
+        }
+
+        public void Dispose()
+        {
+            ManagedDomain?.Dispose();
+            ManagedRecord?.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 using DnsMadeEasy.Api.Models;
 
@@ -6,7 +7,7 @@ using RestEase;
 
 namespace DnsMadeEasy.Api
 {
-    public interface IManagedRecord
+    public interface IManagedRecord : IDisposable
     {
         [Get("/dns/managed/{domainId}/records")]
         Task<Response<PagedResult<ManagedRecord>>> GetRecords(string domainId);
